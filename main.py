@@ -26,6 +26,7 @@ def main():
     job_to_be_done = config_data.get("job_to_be_done", {}).get("task", "Summarize documents")
     documents = config_data.get("documents", [])
 
+    
     # Validate documents
     pdf_files = []
     for doc in documents:
@@ -43,6 +44,7 @@ def main():
         print("No valid PDF documents found!")
         return
 
+    
     # Extract and process
     extracted_sections = []
     for pdf in pdf_files:
