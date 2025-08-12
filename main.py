@@ -13,6 +13,7 @@ OUTPUT_DIR = "data/output"
 
 def main():
     start_time = time.time()
+    
 
     # Load input.json
     if not os.path.exists(INPUT_JSON):
@@ -25,6 +26,7 @@ def main():
     persona = config_data.get("persona", {}).get("role", "Analyst")
     job_to_be_done = config_data.get("job_to_be_done", {}).get("task", "Summarize documents")
     documents = config_data.get("documents", [])
+    
 
     
     # Validate documents
@@ -43,6 +45,7 @@ def main():
     if not pdf_files:
         print("No valid PDF documents found!")
         return
+        
 
     
     # Extract and process
@@ -52,6 +55,7 @@ def main():
         for sec in sections:
             sec["doc_title"] = pdf["title"]
         extracted_sections.extend(sections)
+        
 
     summarized_sections = summarize_sections(extracted_sections, persona=persona, job=job_to_be_done)
     ranked_sections = rank_sections(summarized_sections)
@@ -75,3 +79,4 @@ def main():
 
 if __name__ == "__main__":
                           main()
+
